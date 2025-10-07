@@ -3,7 +3,8 @@ package locadora;
 abstract class Automovel {
     protected  abstract double getValorAluguel(int diasAlugado);
     protected abstract int getPontoDeLocadorFrequente(int diasAlugado);
-
+// ainda nao  existe uma regra geral de alugueis frequentes e atribuicoes de ponto, o metodo aqui é apenas
+// uma abstacao e cada modelo de carro tem sua propria logica em lidar com o esquema de pontos
     private String descricao;
     private String placa;
     private int ano; // Ano de fabricacao
