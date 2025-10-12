@@ -10,7 +10,7 @@ abstract class Automovel {
     private int ano; // Ano de fabricacao
     private int codigoDoPreco;
 
-    public Automovel(String descricao, int ano, String placa, int codigoDoPreco) {
+    public Automovel(String descricao, int ano, String placa, git aint codigoDoPreco) {
         this.descricao = descricao;
         this.placa = placa;
         this.ano = ano;
