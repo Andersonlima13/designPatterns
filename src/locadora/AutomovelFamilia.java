@@ -3,17 +3,14 @@ package locadora;
 // Implementação para Carros Sedan ou SUV (Família)
 public class AutomovelFamilia extends Automovel {
     public AutomovelFamilia(String descricao, int ano, String placa) {
-        super(descricao, ano, placa, 1); // Código 1 = Família
+        super(descricao, ano, placa, 2, 90.0);
+    }
+    @Override
+    public double getValorTotalAluguel(Locacao locacao) {
+        // DECISÃO DO AUTOMOVEL BÁSICO: Usar o valor SEM desconto.
+        return locacao.getValorAluguelBase();
     }
 
-    @Override
-    protected double getValorAluguel(int diasAlugado) {
-        return diasAlugado * 130.0;
-    }
 
-    @Override
-    protected int getPontoDeLocadorFrequente(int diasAlugado) {
-        // Regra padrão: 1 ponto por aluguel
-        return 1;
-    }
+
 }

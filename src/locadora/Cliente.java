@@ -34,8 +34,8 @@ public class Cliente  {
 
         while(locacoes.hasNext()){
             Locacao carroAlugado = locacoes.next();
-            double valorCorrente = carroAlugado.getCarro().getValorAluguel(carroAlugado.getDiasAlugado());
-            int pontos = carroAlugado.getCarro().getPontoDeLocadorFrequente(carroAlugado.getDiasAlugado());
+            double valorCorrente = carroAlugado.getCarro().getValorTotalAluguel(carroAlugado);
+            int pontos = carroAlugado.getPontosLocadorFrequente();
 
 
             sequencia++;
