@@ -12,7 +12,6 @@ public class Cliente  {
     public Cliente (String nome) {this.nome = nome;}
 
 
-
     public String getNome() {
         return nome;
     }
@@ -21,10 +20,41 @@ public class Cliente  {
         carrosAlugados.add(locacao);
     }
 
+
+
+    public double getValorTotal() {
+        double valorTotal = 0.0;
+
+        for (Locacao locacao : carrosAlugados) {
+            // Chamada polimórfica: o carro decide o valor final (com ou sem desconto)
+            valorTotal += locacao.getCarro().getValorTotalAluguel(locacao);
+        }
+        return valorTotal;
+    }
+
+    public int getPontosDeLocadorFrequente() {
+        int pontosDeLocadorFrequente = 0;
+
+        for (Locacao locacao : carrosAlugados) {
+            int diasAlugado = locacao.getDiasAlugado();
+
+            // Lógica de pontos movida para cá, usando o getter de Locacao
+            pontosDeLocadorFrequente += 1; // Ponto base
+            if (diasAlugado > 2) {
+                pontosDeLocadorFrequente += 2; // Bônus
+            }
+        }
+        return pontosDeLocadorFrequente;
+    }
+
+
+
+
+
     public String extrato() {
         final String fimDeLinha = System.getProperty("line.separator");
-        double valorTotal = 0.0;
-        int pontosDeLocadorFrequente = 0;
+        double valorTotal = getValorTotal();
+        int pontosDeLocadorFrequente = getPontosDeLocadorFrequente();
         int sequencia = 0;
 
         Iterator<Locacao> locacoes = carrosAlugados.iterator();
@@ -35,15 +65,12 @@ public class Cliente  {
         while(locacoes.hasNext()){
             Locacao carroAlugado = locacoes.next();
             double valorCorrente = carroAlugado.getCarro().getValorTotalAluguel(carroAlugado);
-            int pontos = carroAlugado.getPontosLocadorFrequente();
 
 
             sequencia++;
             resultado += String.format("%02d. %-20s  %4d    %2d     R$ %8.2f"+fimDeLinha,
                     sequencia, carroAlugado.getCarro().getDescricao(), carroAlugado.getCarro().getAno(), carroAlugado.getDiasAlugado(), valorCorrente);
 
-            valorTotal += valorCorrente;
-            pontosDeLocadorFrequente += pontos;
         }
 
         resultado += "====================================================" + fimDeLinha;

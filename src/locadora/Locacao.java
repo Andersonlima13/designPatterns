@@ -21,13 +21,13 @@ public class Locacao {
 
 
 
-    protected double getValorAluguelBase() {
+    protected double valorDeUmaLocacao() {
         return carro.getValorAutomovel() * diasAlugado;
     }
 
 
     protected double getValorAluguelDescontado() {
-        double valorBase = getValorAluguelBase();
+        double valorBase = valorDeUmaLocacao();
 
         // A regra de negócio concentrada aqui
         if (diasAlugado > 4) {

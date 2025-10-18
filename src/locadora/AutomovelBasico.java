@@ -43,7 +43,7 @@ public class AutomovelBasico extends Automovel {
     @Override
     public double getValorTotalAluguel(Locacao locacao) {
         // DECISÃO DO AUTOMOVEL BÁSICO: Usar o valor SEM desconto.
-        return locacao.getValorAluguelBase();
+        return locacao.valorDeUmaLocacao();
     }
 
 
