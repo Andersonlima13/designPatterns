@@ -1,17 +1,26 @@
 package locadora;
 
 public class Locacao {
-	   private Automovel carro;
+	   //private Automovel carro;
+       private Alugavel itemAlugavel;
 	   private int diasAlugado;
-	 
-	   public Locacao(Automovel carro, int diasAlugado) {
-	      this.carro = carro;
-	      this.diasAlugado = diasAlugado;
+
+
+
+	   public Locacao(Alugavel item, int diasAlugado) {
+           this.itemAlugavel = item;
+           this.diasAlugado = diasAlugado;
 	   }
-	 
-	   public Automovel getCarro() {
-	      return carro;
-	   }
+
+	   //public Automovel getCarro() {
+	   //   return carro;
+	   // }
+
+        public Alugavel getItemAlugavel() {
+            return itemAlugavel;
+        }
+
+
 	 
 	   public int getDiasAlugado() {
 	      return diasAlugado;
@@ -22,7 +31,7 @@ public class Locacao {
 
 
     protected double valorDeUmaLocacao() {
-        return carro.getValorAutomovel() * diasAlugado;
+        return itemAlugavel.getValorAutomovel() * diasAlugado;
     }
 
 
@@ -36,15 +45,6 @@ public class Locacao {
         return valorBase;
     }
 
-
-
-    public int getPontosLocadorFrequente() {
-        int pontosDeAlugadorFrequente = 1;
-        if (diasAlugado > 2){
-            pontosDeAlugadorFrequente+=2;
-        }
-        return pontosDeAlugadorFrequente;
-    }
 
 
 

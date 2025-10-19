@@ -1,7 +1,7 @@
 package locadora;
 
-abstract class Automovel {
-    public abstract double getValorTotalAluguel(Locacao locacao);
+abstract class Automovel implements Alugavel{
+    //public abstract double getValorTotalAluguel(Locacao locacao);
     private String descricao;
     private String placa;
     private int ano; // Ano de fabricacao

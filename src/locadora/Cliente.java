@@ -26,8 +26,8 @@ public class Cliente  {
         double valorTotal = 0.0;
 
         for (Locacao locacao : carrosAlugados) {
-            // Chamada polimórfica: o carro decide o valor final (com ou sem desconto)
-            valorTotal += locacao.getCarro().getValorTotalAluguel(locacao);
+
+            valorTotal += locacao.getItemAlugavel().getValorTotalAluguel(locacao);
         }
         return valorTotal;
     }
@@ -64,12 +64,12 @@ public class Cliente  {
 
         while(locacoes.hasNext()){
             Locacao carroAlugado = locacoes.next();
-            double valorCorrente = carroAlugado.getCarro().getValorTotalAluguel(carroAlugado);
-
+            Alugavel item = carroAlugado.getItemAlugavel();
+            double valorCorrente = item.getValorTotalAluguel(carroAlugado);
 
             sequencia++;
             resultado += String.format("%02d. %-20s  %4d    %2d     R$ %8.2f"+fimDeLinha,
-                    sequencia, carroAlugado.getCarro().getDescricao(), carroAlugado.getCarro().getAno(), carroAlugado.getDiasAlugado(), valorCorrente);
+                    sequencia, item.getDescricao(), item.getAno(), carroAlugado.getDiasAlugado(), valorCorrente);
 
         }
 
